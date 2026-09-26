@@ -1119,7 +1119,7 @@ html.has-custom-cursor * {
 .chai-btn {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  left: 20px;
   z-index: 6;
   background: var(--amber);
   color: var(--on-accent);
