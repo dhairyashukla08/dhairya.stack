@@ -1141,3 +1141,20 @@ html.has-custom-cursor * {
     font-size: 12px;
   }
 }
+
+.particle-net {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.particle-net canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 900px) {
+  .particle-net {
+    display: none;
+  }
+}

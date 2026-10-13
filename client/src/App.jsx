@@ -14,6 +14,7 @@ import {
 } from "./data.js";
 import { THEMES, DEFAULT_THEME } from "./themes.js";
 import { playSuccess, playError, resumeAudio, playSelect } from "./sound.js";
+import ParticleNetwork from "./ParticleNetwork.jsx";
 
 const API = import.meta.env.VITE_API_URL || "";
 const NAV = [
@@ -491,6 +492,7 @@ function ThemeSwitcher() {
     localStorage.setItem("theme", id);
     setTheme(id);
     setOpen(false);
+     window.dispatchEvent(new Event("theme-changed"));
   };
 
   return (
@@ -927,6 +929,8 @@ export default function App() {
       </header>
       <main id="top">
         <section className="hero">
+          
+          <ParticleNetwork/>
           <FloatIcons />
           <div className="hero-copy">
             <p className="avail">
