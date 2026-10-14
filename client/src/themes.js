@@ -10,4 +10,4 @@ export const THEMES = [
   { id: "noir", label: "Noir", swatch: ["#000000", "#ffffff"] },
 ];
 
-export const DEFAULT_THEME = "midnight";
+export const DEFAULT_THEME = "noir";

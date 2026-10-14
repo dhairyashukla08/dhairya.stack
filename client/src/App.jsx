@@ -15,6 +15,7 @@ import {
 import { THEMES, DEFAULT_THEME } from "./themes.js";
 import { playSuccess, playError, resumeAudio, playSelect } from "./sound.js";
 import ParticleNetwork from "./ParticleNetwork.jsx";
+import SignatureName from "./SignatureName.jsx";
 
 const API = import.meta.env.VITE_API_URL || "";
 const NAV = [
@@ -122,9 +123,9 @@ function formatUptime(sec) {
 /* ---------- Hero terminal: the signature piece ---------- */
 const COMMANDS = {
   help: () => [
-  "whoami  skills  experience  projects  contact  status",
-  "github  linkedin  clear  matrix   (try: sudo hire dhairya)",
-],
+    "whoami  skills  experience  projects  contact  status",
+    "github  linkedin  clear  matrix   (try: sudo hire dhairya)",
+  ],
   whoami: () => [me.name + " | " + me.location, ...me.roles],
   skills: () => Object.entries(skills).map(([k, v]) => `${k}: ${v.join(", ")}`),
   experience: () => jobs.map((j) => `${j.when}  ${j.role}, ${j.org}`),
@@ -413,13 +414,13 @@ function Palette({ open, close }) {
     }
   }, [open]);
   const items = [
-  ...NAV.map((n) => ({ t: `Go to ${n}`, f: () => go(n) })),
-  { t: "Email me", f: () => (window.location.href = `mailto:${me.email}`) },
-  { t: "Copy email", f: () => navigator.clipboard?.writeText(me.email) },
-  { t: "Download resume", f: () => window.open("/dhairyaResume.pdf") },
-  { t: "Open GitHub", f: () => window.open(me.github) },
-  { t: "Open LinkedIn", f: () => window.open(me.linkedin) },
-].filter((x) => x.t.toLowerCase().includes(q.toLowerCase()));
+    ...NAV.map((n) => ({ t: `Go to ${n}`, f: () => go(n) })),
+    { t: "Email me", f: () => (window.location.href = `mailto:${me.email}`) },
+    { t: "Copy email", f: () => navigator.clipboard?.writeText(me.email) },
+    { t: "Download resume", f: () => window.open("/dhairyaResume.pdf") },
+    { t: "Open GitHub", f: () => window.open(me.github) },
+    { t: "Open LinkedIn", f: () => window.open(me.linkedin) },
+  ].filter((x) => x.t.toLowerCase().includes(q.toLowerCase()));
   const onKey = (e) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -492,7 +493,7 @@ function ThemeSwitcher() {
     localStorage.setItem("theme", id);
     setTheme(id);
     setOpen(false);
-     window.dispatchEvent(new Event("theme-changed"));
+    window.dispatchEvent(new Event("theme-changed"));
   };
 
   return (
@@ -884,18 +885,19 @@ export default function App() {
   }, [muted]);
 
   useEffect(() => {
-  const onSelectionChange = () => {
-    const sel = window.getSelection();
-    const hasText = !!sel && sel.toString().trim().length > 0;
-    if (hasText && !hadSelection.current && !muted) {
-      resumeAudio();
-      playSelect();
-    }
-    hadSelection.current = hasText;
-  };
-  document.addEventListener("selectionchange", onSelectionChange);
-  return () => document.removeEventListener("selectionchange", onSelectionChange);
-}, [muted]);
+    const onSelectionChange = () => {
+      const sel = window.getSelection();
+      const hasText = !!sel && sel.toString().trim().length > 0;
+      if (hasText && !hadSelection.current && !muted) {
+        resumeAudio();
+        playSelect();
+      }
+      hadSelection.current = hasText;
+    };
+    document.addEventListener("selectionchange", onSelectionChange);
+    return () =>
+      document.removeEventListener("selectionchange", onSelectionChange);
+  }, [muted]);
 
   return (
     <>
@@ -904,7 +906,7 @@ export default function App() {
       {matrix && <MatrixRain onDone={() => setMatrix(false)} />}
       <BuyMeChai />
       <header className="nav">
-        <a href="#top" className="logo">
+        <a href="#top" className="logo" aria-label="Dhairya Shukla — home">
           dhairya.stack
         </a>
         <nav>
@@ -929,14 +931,15 @@ export default function App() {
       </header>
       <main id="top">
         <section className="hero">
-          
-          <ParticleNetwork/>
+          <ParticleNetwork />
           <FloatIcons />
           <div className="hero-copy">
             <p className="avail">
               <span /> Available for freelance and full-time roles
             </p>
-            <h1>I build web apps and ship Android at LinkedIn scale.</h1>
+            <p className="eyebrow">Hi, I'm</p>
+            <h1>{me.name}</h1>
+            <p className="tagline"> A developer who likes making things that are fast, reliable, and don't break when people actually use them.</p>
             <p className="lead">{me.about}</p>
             <div className="cta">
               <a className="btn" href="#projects">
@@ -1072,6 +1075,7 @@ export default function App() {
             <ProfileCards />
           </div>
         </Section>
+        <SignatureName />
       </main>
       <footer className="site-footer">
         <p>

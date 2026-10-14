@@ -11,7 +11,7 @@ export const me = {
     "Android SDUI contributor",
   ],
   about:
-    "I build fast, reliable web apps and ship production Android code. Today I work on LinkedIn's Identity track on a Server-Driven UI architecture; before that I built booking platforms and invitation tools with React, Node and MongoDB.",
+    "Currently building Android features on LinkedIn's Server-Driven UI architecture. Previously: a MERN tour-booking platform (+25% conversions, 60% faster API responses), a REST API serving a digital invitation product at 99% uptime. I optimize before I scale, and I write validation and error handling with the same care as the feature itself.",
 };
 export const now = [
   ['Building', "THE BLUE CUP - A Cafe management system with QR's"],
