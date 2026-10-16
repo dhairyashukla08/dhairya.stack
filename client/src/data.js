@@ -79,12 +79,12 @@ export const jobs = [
 ];
 export const projects = [
   {
-    title: "DarkKnight Vault",
+    title: "DevPulse",
     description:
-      "Secure vault for sensitive data with AES-256 encryption, Bcrypt hashing, JWT sessions and a Goal Tracker that lifted engagement 35%.",
-    stack: ["React", "Express", "MongoDB", "JWT"],
-    live: "https://darkknight-vault-a-finance-tracker.netlify.app/",
-    github: "https://github.com/dhairyashukla08/Darkknight-Vault-Backend",
+      "A noir-styled Chrome new-tab dashboard: case-file tasks, a stakeout Pomodoro timer, GitHub activity, trending repos, Hacker News, service status and a built-in dev toolbox (JSON, Base64, JWT decoder, hashing). Try it live in the browser, or install it as a real new tab in under two minutes.",
+    stack: ["JavaScript", "Chrome Extension", "Manifest V3", "REST APIs"],
+    live: "https://devpulse-extension-noir.netlify.app",
+    github: "https://github.com/dhairyashukla08/DevPulse-Extension-for-browser",
   },
   {
     title: "EstateFlow",
@@ -93,6 +93,14 @@ export const projects = [
     stack: ["ReactJS", "NodeJS", "MongoDB","ExpressJS", "Netlify", "Render","Redis","JWT","Authentication and Authorzation"],
     live: "https://estate-flow-frontend.netlify.app/",
     github: "https://github.com/dhairyashukla08/ESTATE_FLOW_BACKEND",
+  },
+  {
+    title: "DarkKnight Vault",
+    description:
+      "Secure vault for sensitive data with AES-256 encryption, Bcrypt hashing, JWT sessions and a Goal Tracker that lifted engagement 35%.",
+    stack: ["React", "Express", "MongoDB", "JWT"],
+    live: "https://darkknight-vault-a-finance-tracker.netlify.app/",
+    github: "https://github.com/dhairyashukla08/Darkknight-Vault-Backend",
   },
   {
     title: "HolidayWaale",
